@@ -39,6 +39,7 @@ Homebrew (macOS / Linux):
 
 ```bash
 brew tap chrischabot/imagegen
+brew trust chrischabot/imagegen   # Homebrew ≥ 6 requires trusting third-party taps
 brew install imagegen
 ```
 
