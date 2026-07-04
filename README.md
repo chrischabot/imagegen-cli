@@ -35,6 +35,15 @@ leans into that:
 
 ## Install
 
+Homebrew (macOS / Linux):
+
+```bash
+brew tap chrischabot/imagegen
+brew install imagegen
+```
+
+Or with cargo:
+
 ```bash
 cargo install --git https://github.com/chrischabot/imagegen-cli
 ```
@@ -54,17 +63,12 @@ use `.claude/skills/imagegen/` in the repo instead.)
 
 ## Authentication
 
-Resolved in order:
+Pass `--api-key sk-...`, or set the `OPENAI_API_KEY` environment variable
+(the flag wins when both are present).
 
-1. `--api-key sk-...` flag
-2. `OPENAI_API_KEY` environment variable
-3. `~/.codex/auth.json` — if you've logged in to the [Codex CLI](https://github.com/openai/codex)
-   with an API key, that key is reused automatically.
-
-> **Note on Codex ChatGPT logins:** Codex OAuth tokens (`tokens.access_token` in
-> `auth.json`) are scoped to the ChatGPT backend, not the platform API, so they
-> can't be used for `/v1/images` and are deliberately ignored. Only the
-> `OPENAI_API_KEY` field of `auth.json` is read.
+> **Why not ChatGPT/Codex logins?** ChatGPT OAuth tokens are scoped to the
+> ChatGPT backend, not the platform API, so they can't be used for
+> `/v1/images`. A platform API key is required.
 
 `gpt-image-2` requires [organization verification](https://help.openai.com/en/articles/10910291-api-organization-verification)
 on your OpenAI account. If you can't verify, use `-m gpt-image-1.5`.

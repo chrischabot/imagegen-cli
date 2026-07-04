@@ -1,6 +1,6 @@
 [package]
 name = "imagegen"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Fast, agent-friendly CLI for OpenAI image generation (gpt-image-2)"
 license = "MIT"

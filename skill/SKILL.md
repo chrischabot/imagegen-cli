@@ -11,8 +11,7 @@ description: >-
 
 `imagegen` generates and edits images with OpenAI's gpt-image models
 (default: `gpt-image-2`). It prints saved file paths to stdout (one per line);
-progress goes to stderr. Requires `OPENAI_API_KEY` (or `--api-key`, or a
-Codex CLI API-key login).
+progress goes to stderr. Requires `OPENAI_API_KEY` (or `--api-key`).
 
 ## Generate
 

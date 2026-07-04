@@ -20,10 +20,7 @@ use api::{ApiError, Client, ImageRequest};
     about = "Generate and edit images with OpenAI's gpt-image models",
     long_about = "Generate and edit images with OpenAI's gpt-image models (default: gpt-image-2).\n\
                   \n\
-                  Authentication (in order of precedence):\n  \
-                  1. --api-key flag\n  \
-                  2. OPENAI_API_KEY environment variable\n  \
-                  3. ~/.codex/auth.json (Codex CLI, API-key logins only)\n\
+                  Authentication: --api-key flag, or the OPENAI_API_KEY environment variable.\n\
                   \n\
                   Saved image paths are printed to stdout, one per line; everything else\n\
                   goes to stderr. Use --json for machine-readable output.\n\
@@ -125,7 +122,7 @@ struct SharedOpts {
 
 #[derive(Args)]
 struct ConnOpts {
-    /// OpenAI API key (overrides OPENAI_API_KEY and ~/.codex/auth.json)
+    /// OpenAI API key (overrides the OPENAI_API_KEY environment variable)
     #[arg(long, value_name = "KEY")]
     api_key: Option<String>,
 
@@ -241,7 +238,8 @@ fn usage_err(msg: String) -> anyhow::Error {
 
 fn no_key_err() -> anyhow::Error {
     anyhow!(ApiError::Auth(
-        "no API key found. Pass --api-key, set OPENAI_API_KEY, or log in to Codex CLI with an API key".to_string()
+        "no API key found. Pass --api-key or set the OPENAI_API_KEY environment variable"
+            .to_string()
     ))
 }
 
