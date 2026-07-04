@@ -51,14 +51,19 @@ cargo install --git https://github.com/chrischabot/imagegen-cli
 
 Or from a checkout: `cargo install --path .`
 
-### Teach it to Claude Code
+### Teach it to Claude Code (or Codex)
 
 ```bash
+# Claude Code
 mkdir -p ~/.claude/skills/imagegen
 cp skill/SKILL.md ~/.claude/skills/imagegen/SKILL.md
+
+# Codex CLI (same skill format)
+mkdir -p ~/.codex/skills/imagegen
+cp skill/SKILL.md ~/.codex/skills/imagegen/SKILL.md
 ```
 
-From then on, asking Claude Code for "a hero image for this page" or "make the
+From then on, asking the agent for "a hero image for this page" or "make the
 logo red" will use `imagegen` with sensible flags. (For project-local installs
 use `.claude/skills/imagegen/` in the repo instead.)
 
