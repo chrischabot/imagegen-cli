@@ -1,0 +1,7 @@
+/target
+*.png
+*.jpeg
+*.jpg
+*.webp
+!examples/*.png
+!examples/*.jpeg
