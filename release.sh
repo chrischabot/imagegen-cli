@@ -92,11 +92,11 @@ gh repo clone "${TAP_REPO}" "${TAP_CHECKOUT}" -- --quiet
 FORMULA_FILE="${TAP_CHECKOUT}/${FORMULA_PATH_IN_TAP}"
 mkdir -p "$(dirname "${FORMULA_FILE}")"
 # The template is the source of truth; version + sha are stamped in each time.
-cp "${PROJECT_DIR}/homebrew/imagegen.rb" "${FORMULA_FILE}"
-sed -i '' -E \
+# Rendered template -> file (portable across BSD and GNU sed).
+sed -E \
   -e "s|/tags/v[0-9][^\"]*\.tar\.gz|/tags/${TAG}.tar.gz|" \
   -e "s|^([[:space:]]*sha256 )\"[^\"]*\"|\\1\"${SHA256}\"|" \
-  "${FORMULA_FILE}"
+  "${PROJECT_DIR}/homebrew/imagegen.rb" > "${FORMULA_FILE}"
 
 grep -q "tags/${TAG}.tar.gz" "${FORMULA_FILE}" \
   || fail "formula substitution failed: url not updated in ${FORMULA_FILE}"
