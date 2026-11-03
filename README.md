@@ -177,6 +177,11 @@ cargo build --release
 
 CI runs these along with `cargo fmt --check` on Ubuntu and macOS. A live smoke test needs an API key and spends about a cent: `cargo run --release -- gen "a red circle" -q low`.
 
+## Project background
+
+- [imagegen-cli project overview](https://chabot.dev/projects/#imagegen-cli) on Chris Chabot’s site.
+- [15 minutes from intent to implemented](https://chabot.dev/blog/ninety-minutes-to-a-real-tool/): the CLI interface, agent workflow and release process.
+
 ## License
 
 [MIT](LICENSE). Copyright (c) 2026 Chris Chabot.
