@@ -92,7 +92,7 @@ struct SharedOpts {
     #[arg(short = 'c', long, value_parser = clap::value_parser!(u8).range(0..=100))]
     compression: Option<u8>,
 
-    /// Background style (transparent is not supported by gpt-image-2)
+    /// Background style (transparent requires png or webp)
     #[arg(short, long, value_enum)]
     background: Option<Background>,
 
@@ -263,9 +263,6 @@ fn run_image_command(prompt: String, opts: SharedOpts, edit: Option<EditArgs>) -
     if opts.model == "gpt-image-2" {
         if let Some(hint) = api::gpt_image_2_size_hint(&opts.size) {
             eprintln!("warning: {hint}");
-        }
-        if matches!(opts.background, Some(Background::Transparent)) {
-            eprintln!("warning: gpt-image-2 does not support transparent backgrounds; use gpt-image-1.5 or gpt-image-1");
         }
     }
     if opts.compression.is_some() && matches!(opts.format, Format::Png) {
