@@ -115,7 +115,7 @@ imagegen models          # image models available to your key
 imagegen models --json
 ```
 
-`--model` goes to the API exactly as you write it, and the default is `gpt-image-2`. OpenAI now recommends `gpt-image-2.5-flare` and `gpt-image-2.5-sunburst` for new work, and you can select them by name, although `--quality` stops at `high` and can't reach their `xhigh` and `max` settings. The older models are closing down: [OpenAI's deprecation schedule](https://platform.openai.com/docs/deprecations) shows `gpt-image-1` shut down on October 23, 2026, with `gpt-image-1.5` and `gpt-image-1-mini` following on December 1, 2026.
+`--model` goes to the API exactly as you write it, and the default is `gpt-image-2`. OpenAI recommends `gpt-image-2.6-flare` and `gpt-image-2.6-sunburst` as replacements for older GPT Image models, and you can select them by name, although `--quality` stops at `high` and can't reach their `xhigh` and `max` settings. The older models are closing down: [OpenAI's deprecation schedule](https://platform.openai.com/docs/deprecations) shows `gpt-image-1` shut down on October 23, 2026, with `gpt-image-1.5` and `gpt-image-1-mini` following on December 1, 2026.
 
 ### JSON output
 
@@ -155,7 +155,7 @@ A result has this shape:
 
 - **Sizes:** both edges must be multiples of 16, the longest edge at most 3840, the aspect ratio at most 3:1 and the total between 655,360 and 8,294,400 pixels. Popular choices are `1024x1024`, `1536x1024`, `1024x1536`, `2048x1152` and `3840x2160`, and square images are usually fastest. The CLI warns on stderr about a size outside these limits but still sends the request.
 - **Cost:** OpenAI's [published output prices](https://platform.openai.com/docs/guides/image-generation) for a 1024×1024 image are about $0.006 at low quality, $0.053 at medium and $0.211 at high, so draft at `low` and finish at `medium` or `high`. Edits can cost more, because gpt-image-2 processes every input image at high fidelity.
-- **Transparency:** OpenAI added [preview support for transparent backgrounds](https://developers.openai.com/api/docs/changelog#august-2026) to gpt-image-2; use `-b transparent -f png` or `-b transparent -f webp`. This CLI still prints its older warning that transparency is unsupported, but sends the request. The bundled skill also still suggests `gpt-image-1.5`, which closes on December 1, 2026.
+- **Transparency:** OpenAI added [preview support for transparent backgrounds](https://developers.openai.com/api/docs/changelog#august-2026) to gpt-image-2; use `-b transparent -f png` or `-b transparent -f webp`. For new workflows, `-m gpt-image-2.6-flare` also supports transparent PNG and WebP; see the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation#transparent-backgrounds).
 
 ## Exit codes
 

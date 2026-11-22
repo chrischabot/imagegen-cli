@@ -28,7 +28,7 @@ Key flags (all optional):
 | `-q, --quality` | `auto`, `low`, `medium`, `high` | `low` ≈ $0.006 and ~15s; `high` ≈ $0.21 and slower. Use `low` for drafts/placeholders, `medium`+ for final assets |
 | `-f, --format` | `png`, `jpeg`, `webp` | jpeg/webp are smaller and faster; add `-c 0-100` for compression |
 | `-n` | 1–10 | variations of the same prompt in one call |
-| `-m, --model` | `gpt-image-2` (default), `gpt-image-1.5`, `gpt-image-1`, `gpt-image-1-mini` | use `gpt-image-1.5` if you need `--background transparent` (gpt-image-2 doesn't support it) |
+| `-m, --model` | `gpt-image-2` (default), `gpt-image-2.6-flare`, `gpt-image-2.6-sunburst` | use PNG or WebP with `--background transparent` |
 | `--json` | | machine-readable result: absolute paths, bytes, token usage |
 | `--quiet` | | paths only, no progress on stderr |
 
@@ -48,7 +48,7 @@ Masks are PNG with alpha; transparent pixels mark the region to replace.
   `imagegen gen "..." -q low -n 3 -o drafts/` → pick one → regenerate at `-q high`
 - Web asset: `imagegen gen "..." -f webp -c 80 -s 1536x1024`
 - Wallpaper/hero: `-s 3840x2160 -q high` (slow; can take 1–2 min)
-- Icon on transparent background: `-m gpt-image-1.5 -b transparent -f png`
+- Icon on transparent background: `-m gpt-image-2.6-flare -b transparent -f png`
 - Verify results by reading the output file (it's an image; you can view it).
 
 ## Exit codes
